@@ -30,7 +30,7 @@ public class LocatorMethods {
         wait=new WebDriverWait(driver,10);
         initProperties();
          }
-
+//git study
     private void initProperties() throws IOException {
         InputStream inputStream=getClass().getClassLoader().getResourceAsStream("locatorId.properties");
         locatorId.load(inputStream);
