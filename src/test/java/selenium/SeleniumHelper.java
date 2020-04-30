@@ -2,6 +2,8 @@ package selenium;
 
 
 
+import org.testng.Assert;
+
 import static selenium.LocatorMethods.*;
 
 public class SeleniumHelper {
@@ -15,5 +17,13 @@ public class SeleniumHelper {
         locateElements(area).sendKeys(input);
     }
 
+    public static void clickHelper(String element){
+        locateElements(element).click();
+    }
+
+    public static void shouldSeePageHelper(String element){
+        boolean displayed = locateElements(element).isDisplayed();
+        Assert.assertEquals(true,displayed);
+    }
 
 }

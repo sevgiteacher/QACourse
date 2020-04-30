@@ -1,5 +1,6 @@
 package selenium;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,5 +25,15 @@ public class StepDefs {
 
     @Then("user views {string}")
     public void userViews(String arg0) {
+    }
+
+    @And("user clicks {string}")
+    public void userClicks(String element) {
+        clickHelper(element);
+    }
+
+    @Then("user should see {string} page")
+    public void userShouldSeePage(String element) {
+        shouldSeePageHelper(element);
     }
 }

@@ -22,7 +22,6 @@ public class LocatorMethods {
     public static WebDriver driver;
     public static WebDriverWait wait;
 
-    InputStream inputStream;
 
     @Before
     public void setDriver() throws IOException {
@@ -33,14 +32,11 @@ public class LocatorMethods {
          }
 
     private void initProperties() throws IOException {
-        inputStream=getClass().getClassLoader().getResourceAsStream("locatorId.properties");
+        InputStream inputStream=getClass().getClassLoader().getResourceAsStream("locatorId.properties");
         locatorId.load(inputStream);
 
         InputStream inputStream2=getClass().getClassLoader().getResourceAsStream("locatorType.properties");
         locatorType.load(inputStream2);
-//        locatorId.load(getClass().getResourceAsStream("locatorId.properties"));
-//        locatorType.load(getClass().getResourceAsStream("locatorType.properties"));
-
     }
 
     @After
