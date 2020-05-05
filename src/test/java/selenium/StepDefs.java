@@ -8,13 +8,14 @@ import io.cucumber.java.en.When;
 import static selenium.SeleniumHelper.*;
 
 public class StepDefs {
-    @Given("user opens {string}")
-    public void userOpens(String url) {
+    @Given("user navigates {string}")
+    public void userNavigates(String url) {
         navigateHelper(url);
     }
 
     @When("user enters {string} to {string} area")
-    public void userEntersToArea(String input, String area) {
+    public void userEntersToArea(String input, String area)
+    {
         enterToAreaHelper(input, area);
     }
 
@@ -25,11 +26,17 @@ public class StepDefs {
 
     @And("user clicks {string}")
     public void userClicks(String element) {
-        userClicks(element);
+        clickHelper(element);
     }
 
-    @Then("user should see {string} page")
-    public void userShouldSeePage(String element) {
-        userShouldSeePage(element);
+    @Then("user should see {string}")
+    public void userShouldSee(String element) {
+        userShouldSeeHelper(element);
+    }
+
+
+    @And("user move {string} to {string} area")
+    public void userMoveToArea(String fileName, String area) {
+        moveToHelper(fileName, area);
     }
 }
