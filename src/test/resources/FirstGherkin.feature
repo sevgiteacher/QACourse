@@ -2,7 +2,7 @@ Feature: Lets go to google
   Scenario: User goes to Google Main Page
     Given user navigates "https://www.google.com"
     When user enters "Selenium" to "Search_Button" area
-    Then user views ""
+    Then user views "number_of_results"
 
   Scenario: User logins Facebook
     Given user navigates "https://www.facebook.com"
