@@ -32,3 +32,9 @@ Feature: Lets go to google
       | Microsoft_agreement | Microsoft_Services_Agreement_Page |
       | privacy_statement   | privacy_statement_page            |
 
+    
+    Scenario: go to kadaza
+      Given user navigates "https://www.kadaza.co.uk/shopping"
+      When user clicks "tesco_button"
+      And user clicks "accept_cookie"
+      And user enters "apple" to "search_button" area
