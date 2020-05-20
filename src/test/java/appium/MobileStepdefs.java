@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static appium.MobileHelper.*;
+import static appium.ScrollSwipeActionsHelper.*;
 
 public class MobileStepdefs {
     @Given("user install {string} goes {string}")
@@ -65,6 +66,7 @@ public class MobileStepdefs {
     public void userScrollTo(String arg0) {scrollToHelper(arg0);
     }
 
+
     @And("user scroll horizontal to {string}")
     public void userScrollHorizontalTo(String arg0) {scrollHorizontalHelper(arg0);
     }
@@ -72,5 +74,21 @@ public class MobileStepdefs {
     @And("user scroll to {string} into {string}")
     public void userScrollToInto(String arg0, String arg1) {
         scrollToWithIdHelper(arg0,arg1);
+    }
+
+    @And("user scroll {string} to {string}")
+    public void userSwipeToAndClick(String arg0, String arg1) {
+        touchActionMoveToElementHelper(arg0,arg1);
+    }
+
+    @And("user scroll to {string} direction at {string} until {string}")
+    public void userScrollToDirectionAt(String arg0, String arg1, String arg2) {
+        touchActionSwipeHelper(arg0,arg1,arg2);
+    }
+
+
+    @And("user scroll to {string} in {int} steps")
+    public void userScrollToInSteps(String arg0, int arg1) {
+        iterateAction(arg0,arg1);
     }
 }

@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Properties;
 
 public class AppiumSetup {
@@ -75,15 +76,20 @@ public class AppiumSetup {
     }
 
 
-    public static WebElement waitForPresence(By path){
-        return (WebElement) wait.until(ExpectedConditions.presenceOfElementLocated(path));
+    public static MobileElement waitForPresence(By path){
+        return (MobileElement) wait.until(ExpectedConditions.presenceOfElementLocated(path));
     }
 
-    public static WebElement locateElements(String typeOrId){
+    public static List<WebElement> waitForPresences(By path){
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(path));
+    }
+
+
+    public static MobileElement locateElement(String typeOrId){
         String id = locatorId.getProperty(typeOrId);
         String type = locatorType.getProperty(typeOrId);
 
-        WebElement element;
+        MobileElement element;
 
         switch (type){
             case "xpath":
@@ -106,5 +112,62 @@ public class AppiumSetup {
         }
         return element;
     }
+
+    public static List<MobileElement> locateElementsWithoutWait(String typeOrId){
+        String id = locatorId.getProperty(typeOrId);
+        String type = locatorType.getProperty(typeOrId);
+
+        List<MobileElement> elements;
+
+        switch (type){
+            case "xpath":
+                elements = driver.findElements(By.xpath(id));
+                break;
+            case "id":
+                elements = driver.findElements(By.id(id));
+                break;
+            case "desc":
+                elements = driver.findElements(new MobileBy.ByAccessibilityId(id));
+                break;
+            case "name":
+                elements = driver.findElements(By.name(id));
+                break;
+            case "linktext":
+                elements = driver.findElements(By.linkText(id));
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + type);
+        }
+        return elements;
+    }
+
+    public static List<WebElement> locateElementsWithWait(String typeOrId){
+        String id = locatorId.getProperty(typeOrId);
+        String type = locatorType.getProperty(typeOrId);
+
+        List<WebElement> elements;
+
+        switch (type){
+            case "xpath":
+                elements = waitForPresences(By.xpath(id));
+                break;
+            case "id":
+                elements = waitForPresences(By.id(id));
+                break;
+            case "desc":
+                elements = waitForPresences(new MobileBy.ByAccessibilityId(id));
+                break;
+            case "name":
+                elements = waitForPresences(By.name(id));
+                break;
+            case "linktext":
+                elements = waitForPresences(By.linkText(id));
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + type);
+        }
+        return elements;
+    }
+
 
 }

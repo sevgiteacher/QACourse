@@ -34,6 +34,42 @@ Feature: Testing apks dynamically independent from activity and package
     And user clicks "TAB_20"
     Then text in "Content_Of_Tab" should be "Content for tab with tag Tab 20"
 
+  Scenario: user should swipe with TouchAction class
+    Given user opens "AppiumDemos"
+    And user clicks "Views"
+    And user scroll to "Tabs"
+    And user clicks "Tabs"
+    And user clicks "Scrollable"
+    And user scroll "TAB_5" to "TAB_1"
+    And user clicks "TAB_8"
 
+  Scenario: user should swipe with iteration TouchAction class
+    Given user opens "AppiumDemos"
+    And user clicks "Views"
+    And user scroll to "Tabs"
+    And user clicks "Tabs"
+    And user clicks "Scrollable"
+    And user scroll to "TAB_5" in 5 steps
+    And user clicks "TAB_20"
+
+  Scenario: user should swipe until element find using TouchAction class
+    Given user opens "AppiumDemos"
+    And user clicks "Views"
+    And user scroll to "Tabs"
+    And user clicks "Tabs"
+    And user clicks "Scrollable"
+    And user scroll to "RIGHT" direction at "TAB_5" until "TAB_20"
+    And user clicks "TAB_20"
+
+  Scenario: user should define the date from datepicker
+    Given user opens "AppiumDemos"
+    And user clicks "Views"
+    And user clicks "Date_Widgets"
+    And user clicks "Dialog"
+    And user clicks "Change_Date"
+    And user clicks "NEXT_MONTH"
+    And user clicks "18_June"
+    And user clicks "OK_Button"
+    Then text in "Date_Display" should be "6-18-2020 01:02"
     
 
