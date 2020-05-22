@@ -10,3 +10,10 @@ Feature: Lets go to google
     And user enters "pass" to "Facebook_Password" area
     And user clicks "Facebook_Login"
     Then user should see "Login_Facebook" page
+    
+  Scenario: User logins Twitter
+    Given user opens "https://twitter.com/login?lang=en-gb"
+    When user enters "deneme" to "Twitter_userName" area
+    And user enters "1234" to "Twitter_password" area
+    And user clicks "Twitter_Login"
+

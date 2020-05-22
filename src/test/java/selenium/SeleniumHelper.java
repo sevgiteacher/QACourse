@@ -26,4 +26,9 @@ public class SeleniumHelper {
         Assert.assertEquals(true,displayed);
     }
 
+    public static void userViewsHelper(String element) {
+        boolean displayed = locateElements(element).isDisplayed();
+        Assert.assertEquals(true, displayed);
+    }
+
 }

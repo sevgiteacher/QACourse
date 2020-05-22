@@ -24,7 +24,8 @@ public class StepDefs {
     }
 
     @Then("user views {string}")
-    public void userViews(String arg0) {
+    public void userViews(String element) {
+        userViewsHelper(element);
     }
 
     @And("user clicks {string}")
